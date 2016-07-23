@@ -291,11 +291,78 @@ div.slide {
     height: 100%;
     display: inline-block;
     color: #fff;
+    vertical-align: top;
+}
+
+div.slide:not(:first-child) {
+    margin-left: -4px;
+}
+
+div.slide a, div.slide a:visited {
+    color: #afafaf;
+    position: relative;
+    text-decoration: none;
+}
+
+div.slide a:not(.image-link)::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: #afafaf;
+    position: absolute;
+    top: 90%;
+    left: 0;
+    transition: width 0.5s;
+}
+
+div.slide a:hover::after {
+    width: 100%;
 }
 
 div.slide div.content {
-    height: 100%;
-    display: flex;
     align-items: center;
     justify-content: center;
+    white-space: normal;
+    width: 560px;
+    margin: 200px auto 0;
+}
+
+div.slide:first-child {
+    background-color: #29dbff;
+}
+
+div.slide:nth-child(2) {
+    background: linear-gradient(to right, #29dbff, #2bde73)
+}
+
+div.slide:nth-child(3) {
+    background-color: #2bde73;
+}
+
+div.slide:nth-child(4) {
+    background: linear-gradient(to right, #2bde73, #ffac08)
+}
+
+div.slide:last-child {
+    background-color: #ffac08;
+}
+
+div.slide:last-child div.content {
+    text-align: center;
+    margin-top: 250px;
+}
+
+div.slide:last-child div.content img {
+    display: inline-block;
+}
+
+div.slide * {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.4em;
+}
+
+div.slide h1, div.slide span {
+    display: block;
 }
