@@ -327,8 +327,8 @@ div.slide div.content {
     width: 560px;
     position: absolute;
     top: 40%;
-    left: 40%;
-    transform: translate(-40%, -40%);
+    left: 50%;
+    transform: translate(-50%, -40%);
 }
 
 div.slide:first-child {
