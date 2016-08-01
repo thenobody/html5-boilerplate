@@ -292,6 +292,7 @@ div.slide {
     display: inline-block;
     color: #fff;
     vertical-align: top;
+    position: relative;
 }
 
 div.slide:not(:first-child) {
@@ -324,7 +325,10 @@ div.slide div.content {
     justify-content: center;
     white-space: normal;
     width: 560px;
-    margin: 200px auto 0;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    transform: translate(-40%, -40%);
 }
 
 div.slide:first-child {
@@ -349,7 +353,6 @@ div.slide:last-child {
 
 div.slide:last-child div.content {
     text-align: center;
-    margin-top: 250px;
 }
 
 div.slide:last-child div.content img {
