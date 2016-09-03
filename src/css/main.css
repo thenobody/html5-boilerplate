@@ -369,3 +369,12 @@ div.slide * {
 div.slide h1, div.slide span {
     display: block;
 }
+
+div.slide a.image-link span {
+    width: 63px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 50px;
+    color: white;
+}
