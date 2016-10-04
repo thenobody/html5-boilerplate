@@ -1,4 +1,4 @@
-/*
+
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
  * Kroc Camen, and the H5BP dev community and team.
@@ -311,7 +311,7 @@ div.slide a:not(.image-link)::after {
     height: 2px;
     background-color: #afafaf;
     position: absolute;
-    top: 90%;
+    top: 70%;
     left: 0;
     transition: width 0.5s;
 }
@@ -329,6 +329,10 @@ div.slide div.content {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -40%);
+    font-family: 'Kalam', cursive;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.4em;
 }
 
 div.slide:first-child {
@@ -359,12 +363,12 @@ div.slide:last-child div.content img {
     display: inline-block;
 }
 
-div.slide * {
+/*div.slide * {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 300;
     font-size: 24px;
     line-height: 1.4em;
-}
+}*/
 
 div.slide h1, div.slide span {
     display: block;
@@ -377,4 +381,63 @@ div.slide a.image-link span {
     vertical-align: top;
     line-height: 50px;
     color: white;
+}
+
+/* Individual line styles */
+/* slide 1 */
+div.slide:first-child h1.first {
+    font-size: 43px;
+    margin-bottom: 16px;
+}
+
+div.slide:first-child h1.second {
+    font-size: 31px;
+}
+
+div.slide:first-child h1.third {
+    font-size: 31px;
+    margin-bottom: 21px;
+}
+
+div.slide:first-child h1.fourth {
+    font-size: 26px;
+}
+
+div.slide:first-child h1.fifth {
+    font-size: 26px;
+}
+
+/* slide 2 */
+div.slide:nth-child(2) div.content {
+    /*width: 680px;*/
+    width: 724px;
+    font-size: 33px;
+    line-height: 43px;
+}
+
+/* slide 3 */
+div.slide:nth-child(3) div.content {
+    font-size: 34px;
+    line-height: 42px;
+}
+
+/* slide 4 */
+div.slide:nth-child(4) h1.first {
+    width: 685px;
+    font-size: 35px;
+    margin-bottom: 31px;
+}
+
+div.slide:nth-child(4) h1.second {
+    width: 670px;
+    font-size: 35px;
+}
+
+/* slide 5 */
+div.slide:last-child h1 {
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+div.slide:last-child a {
+    font-family: 'Roboto Condensed', sans-serif;
 }
