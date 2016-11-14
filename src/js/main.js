@@ -1,58 +1,54 @@
 $(function() {
-	$('div.container').bind('mousewheel', function(event) {
-		var direction = getDirection(event)
-		if (direction != DIR_RIGHT && direction != DIR_LEFT) {
-			event.preventDefault()
-			this.scrollLeft -= event.originalEvent.deltaY
-		}
-	})
-	// resize()
-	// $(window).resize(resize)
+	scrolling = false;
+	lastTimeStamp = 0.0;
+	currentSlide = 0;
 
-	// var slides = $(".slide")
-	// var slideNum = 0
-	// var slideNumMax = slides.length - 1
+	var slides = $(".slide");
 
-	// var slide = $(slides.get(slideNum))
-	// var scrolling = false;
-
-	// $(document).bind("mousewheel", function(event){
-	// 	event.preventDefault();
-	// 	event.stopPropagation();
-
-	// 	if (!scrolling) {
-	// 		scrolling = true;
-	// 		direction = getDirection(event);
-	// 		if (direction == DIR_DOWN || direction == DIR_RIGHT) {
-	// 			if ((slideNum + 1) <= slideNumMax) {
-	// 				slide = $(slides.get(++slideNum));
-	// 			} else {
-	// 				slide = undefined
-	// 			}
-	// 		} else {
-	// 			if (slideNum - 1 >= 0) {
-	// 				slide = $(slides.get(--slideNum));
-	// 			} else {
-	// 				slide = undefined
-	// 			}
-	// 		}
-			
-	// 		if (slide != undefined) {
-	// 			$("body").animate({scrollLeft: slide.offset().left}, 1500, function() {
-	// 				scrolling = false;
-	// 			});
-	// 		} else {
-	// 			scrolling = false;
-	// 		}
-	// 	}
+	$('.container').bind('mousewheel', function(event) {
+		event.preventDefault();
 		
-	// })
+		if (shouldScroll(event)) {
+			scrollTo(nextSlide(event));
+		}
+		lastTimeStamp = event.timeStamp;
+	})
+
+	function shouldScroll(event) {
+		return (Math.abs(event.timeStamp - lastTimeStamp) > 30) && !scrolling;
+	}
+
+	function nextSlide(event) {
+		var direction = getDirection(event);
+		var slideNum = -1;
+		if (direction == DIR_LEFT || direction == DIR_UP) {
+			slideNum = (currentSlide + 1) % slides.length;
+		} else {
+			if (currentSlide > 0) {
+				slideNum = (currentSlide - 1) % slides.length;
+			} else {
+				slideNum = slides.length - 1;
+			}
+		}
+		return slideNum;
+	}
+
+	function scrollTo(slideNum) {
+		scrolling = true
+		var slide = $(slides.get(slideNum));
+		var offset = slideNum * $('.slide').width()
+		
+		$('div.container').animate({scrollLeft: offset}, 1500, function() {
+			scrolling = false;
+			currentSlide = slideNum;
+		});
+	}
 });
 
-DIR_LEFT = "left"
-DIR_UP = "up"
-DIR_RIGHT = "right"
-DIR_DOWN = "down"
+DIR_LEFT = "left";
+DIR_UP = "up";
+DIR_RIGHT = "right";
+DIR_DOWN = "down";
 
 function getDirection(event) {
 	if (Math.abs(event.originalEvent.deltaX) > Math.abs(event.originalEvent.deltaY)) {
@@ -76,9 +72,9 @@ function getDirection(event) {
 function resize() {
 	var width = $(window).width();
 	var height = $(window).height();
-	var slides = $(".slide").length
+	var slides = $(".slide").length;
 	
-	$(".slide").width(width)
-	$(".slide").height(height)
-	$("body").width(width * slides)
+	$(".slide").width(width);
+	$(".slide").height(height);
+	$("body").width(width * slides);
 }
