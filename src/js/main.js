@@ -9,7 +9,10 @@ $(function() {
 		event.preventDefault();
 		
 		if (shouldScroll(event)) {
-			scrollTo(nextSlide(event));
+			var slideNum = nextSlide(event);
+			if (slideNum >= 0) {
+				scrollTo(nextSlide(event));
+			}
 		}
 		lastTimeStamp = event.timeStamp;
 	})
@@ -21,14 +24,10 @@ $(function() {
 	function nextSlide(event) {
 		var direction = getDirection(event);
 		var slideNum = -1;
-		if (direction == DIR_LEFT || direction == DIR_UP) {
+		if (direction == DIR_LEFT || direction == DIR_UP || direction == DIR_DOWN) {
 			slideNum = (currentSlide + 1) % slides.length;
-		} else {
-			if (currentSlide > 0) {
-				slideNum = (currentSlide - 1) % slides.length;
-			} else {
-				slideNum = slides.length - 1;
-			}
+		} else if (currentSlide > 0) {
+			slideNum = (currentSlide - 1) % slides.length;
 		}
 		return slideNum;
 	}
