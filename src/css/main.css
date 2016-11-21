@@ -399,33 +399,33 @@ div.slide:first-child h1.third {
     margin-bottom: 21px;
 }
 
-div.slide:first-child h1.fourth {
-    font-size: 26px;
-}
-
-div.slide:first-child h1.fifth {
+div.slide:first-child h1.fourth, div.slide:first-child h1.fifth, div.slide:first-child h1.sixth {
     font-size: 26px;
 }
 
 /* slide 2 */
 div.slide:nth-child(2) div.content {
     /*width: 680px;*/
-    width: 724px;
+    width: 940px;
     font-size: 33px;
     line-height: 43px;
 }
 
 /* slide 3 */
 div.slide:nth-child(3) div.content {
+    width: 690px;
     font-size: 34px;
     line-height: 42px;
 }
 
 /* slide 4 */
-div.slide:nth-child(4) h1.first {
-    width: 685px;
-    font-size: 35px;
+div.slide:nth-child(4) h1:nth-child(4) {
+    margin-top: 31px;
     margin-bottom: 31px;
+}
+
+div.slide:nth-child(4) ul {
+  list-style-type: none;
 }
 
 div.slide:nth-child(4) h1.second {
