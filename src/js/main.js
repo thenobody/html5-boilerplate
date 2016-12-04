@@ -5,17 +5,24 @@ $(function() {
 
 	var slides = $(".slide");
 
+	$('a:not(.image-link)').each(function(index) {
+		var after = $('<span/>').addClass('after').width(0)
+		$(this).append(after)
+	})	
+
 	$('.container').bind('mousewheel', function(event) {
 		event.preventDefault();
 		
 		if (shouldScroll(event)) {
 			var slideNum = nextSlide(event);
 			if (slideNum >= 0) {
-				scrollTo(nextSlide(event));
+				scrollTo(nextSlide(event), resetUnderscore, animateUnderscore);
 			}
 		}
 		lastTimeStamp = event.timeStamp;
 	})
+
+	animateUnderscore(slides.first())
 
 	function shouldScroll(event) {
 		return (Math.abs(event.timeStamp - lastTimeStamp) > 30) && !scrolling;
@@ -32,15 +39,30 @@ $(function() {
 		return slideNum;
 	}
 
-	function scrollTo(slideNum) {
+	function scrollTo(slideNum, beforeCallback, afterCallback) {
 		scrolling = true
 		var slide = $(slides.get(slideNum));
 		var offset = slideNum * $('.slide').width()
+
+		if (beforeCallback) {
+			beforeCallback(slide)
+		}
 		
 		$('div.container').animate({scrollLeft: offset}, 1500, function() {
 			scrolling = false;
 			currentSlide = slideNum;
+			if (afterCallback) {
+				afterCallback(slide)
+			}
 		});
+	}
+
+	function resetUnderscore($slide) {
+		$('a:not(.image-link) .after', $slide).stop().width(0)
+	}
+
+	function animateUnderscore($slide) {
+		$('a:not(.image-link) .after', $slide).stop().animate({'width': '100%'}, 800)
 	}
 });
 

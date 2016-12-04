@@ -300,24 +300,19 @@ div.slide:not(:first-child) {
 }
 
 div.slide a, div.slide a:visited {
-    color: #afafaf;
+    color: #fff;
     position: relative;
     text-decoration: none;
 }
 
-div.slide a:not(.image-link)::after {
+/*div.slide a:not(.image-link)::after {*/
+div.slide a .after {
     content: "";
-    width: 0%;
     height: 2px;
-    background-color: #afafaf;
+    background-color: #fff;
     position: absolute;
     top: 70%;
     left: 0;
-    transition: width 0.5s;
-}
-
-div.slide a:hover::after {
-    width: 100%;
 }
 
 div.slide div.content {
@@ -373,6 +368,7 @@ div.slide:first-child h1.first {
 
 div.slide:first-child h1.second {
     font-size: 31px;
+    margin-bottom: 8px;
 }
 
 div.slide:first-child h1.third {
@@ -426,14 +422,6 @@ div.slide:nth-child(2) div.content {
     line-height: 43px;
 }
 
-div.slide:nth-child(2) div.content a {
-    color: #ffffff;
-}
-
-div.slide:nth-child(2) div.content a::after {
-    background-color: #ffffff;
-}
-
 /* slide 3 */
 div.slide:nth-child(3) div.content {
     width: 690px;
@@ -445,13 +433,17 @@ div.slide:nth-child(3) div.content .margin {
     margin-bottom: 6px;
 }
 
-div.slide:nth-child(3) div.content .margin:nth-last-child(3) {
+div.slide:nth-child(3) div.content .margin:nth-child(3) {
+    margin-top: 30px;
+}
+
+div.slide:nth-child(3) div.content .margin:nth-last-child(3) {    
     margin-top: 6px;
 }
 
 div.slide:nth-child(3) div.favourite-keywords {
     font-size: 31px;
-    margin-top: 5px;
+    margin-top: 30px;
 }
 
 div.slide:nth-child(3) div.favourite-keywords ul {
@@ -464,10 +456,10 @@ div.slide:nth-child(3) div.favourite-keywords ul li {
 }
 
 /* slide 4 */
-div.slide:nth-child(4) h1.get-in-touch {
-    margin-top: 10px;
+div.slide:nth-child(4) div.content {
+    font-size: 29px;
 }
 
-div.slide:nth-child(4) h1.get-in-touch a {
-    color: #ffffff;
+div.slide:nth-child(4) h1.get-in-touch {
+    margin-top: 10px;
 }
