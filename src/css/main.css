@@ -457,6 +457,7 @@ div.slide:nth-child(3) div.favourite-keywords ul li {
 
 /* slide 4 */
 div.slide:nth-child(4) div.content {
+    width: 450px;
     font-size: 29px;
 }
 
