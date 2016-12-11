@@ -284,35 +284,36 @@ div.container {
     height: 100%;
     overflow-y: hidden;
     white-space: nowrap;
-}
-
-div.slide {
-    width: 100%;
-    height: 100%;
-    display: inline-block;
     color: #fff;
-    vertical-align: top;
-    position: relative;
 }
 
-div.slide:not(:first-child) {
-    margin-left: -4px;
-}
-
-div.slide a, div.slide a:visited {
+div.container a, div.container a:visited {
     color: #fff;
     position: relative;
     text-decoration: none;
 }
 
 /*div.slide a:not(.image-link)::after {*/
-div.slide a .after {
+div.container a .after {
     content: "";
     height: 2px;
     background-color: #fff;
     position: absolute;
     top: 70%;
     left: 0;
+}
+
+
+div.slide {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+div.slide:not(:first-child) {
+    margin-left: -4px;
 }
 
 div.slide div.content {
@@ -464,3 +465,26 @@ div.slide:nth-child(4) div.content {
 div.slide:nth-child(4) h1.get-in-touch {
     margin-top: 10px;
 }
+
+
+/*
+ Championing remote work
+ */
+div.container.championing h1.large {
+    font-size: 33px;
+    margin-bottom: 45px;
+}
+
+div.container.championing h1.small {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+div.container.championing div.slide:first-child {
+    background-color: #e4491c;
+}
+
+div.container.championing div.slide:first-child div.content {
+    width: 780px;
+}
+
